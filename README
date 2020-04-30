@@ -1,0 +1,11 @@
+Q1. How did changing values on the SparkSession property parameters affect the throughput and latency of the data?
+
+One of the most interesting parameters that I tried was "writeAheadLog.enable". This made the throughput slower but
+if we were running this for a production environment it will nice to have as it will keep a transction log in case of failures.
+
+
+2. What were the 2-3 most efficient SparkSession property key/value pairs? 
+   Through testing multiple variations on values, how can you tell these were the most optimal?
+
+maxRatePerPartition : 100 -> I started with "2" and I saw it execution really slow, upping it to 100 improve the throughput.
+minRatePerPartition : 5 -> Its default value is 1, I tried increasing it and I can see a lower latency.
